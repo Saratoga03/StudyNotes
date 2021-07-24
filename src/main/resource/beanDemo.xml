@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--引入外部文件-->
+    <context:property-placeholder location="conf.properties"></context:property-placeholder>
+
+    <!--提取公共属性值-->
+    <util:list id="list1">
+        <value>佐仓绫音</value>
+        <value>岛风</value>
+    </util:list>
+
+    <!--创建对象：单实例，set方式注入-->
+    <bean id="person" class="cn.gb.demo.spring5.demoClass.Person" p:name="一色彩羽"
+    init-method="initMethod" destroy-method="destroyMethod">
+        <!--变量-->
+        <!--<property name="name" value="一色彩羽"></property>-->
+        <!--数组-->
+        <property name="arrayDemo">
+            <array>
+                <value>小恶魔学妹</value>
+                <value>学生会会长</value>
+                <value><![CDATA[<<..YEAH!!..>>]]></value>
+                <null></null>
+            </array>
+        </property>
+        <!--List-->
+        <property name="listDemo" ref="list1"></property>
+        <!--Map-->
+        <property name="mapDemo">
+            <map>
+                <entry key="1" value="雪ノ下雪乃"></entry>
+                <entry key="2" value="由比ヶ浜結衣"></entry>
+            </map>
+        </property>
+        <!--Set-->
+        <property name="setDemo">
+            <set>
+                <value>${conf.what}</value>
+                <value>${conf.is}</value>
+                <value>${conf.this}</value>
+            </set>
+        </property>
+        <!--对象-->
+        <property name="skill" ref="skill1"></property>
+    </bean>
+
+    <!--创建对象：多实例，有参构造方式注入-->
+    <bean id="skill1" class="cn.gb.demo.spring5.demoClass.Skill" scope="prototype">
+        <constructor-arg name="name" value="发卡王者"></constructor-arg>
+    </bean>
+    <bean id="skill2" class="cn.gb.demo.spring5.demoClass.Skill" scope="prototype">
+        <constructor-arg name="name" value="自爆狂魔"></constructor-arg>
+    </bean>
+
+    <!--bean后置处理器-->
+    <bean id="postProcess" class="cn.gb.demo.spring5.orderDemo.lifeCycleDemo"></bean>
+</beans>
