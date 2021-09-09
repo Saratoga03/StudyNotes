@@ -1,25 +1,24 @@
-java web 环境设定
+# java web 环境设定
 
--语言 java (jdk) 8u301
--IDE IntelliJ IDEA 2018.3.6
--项目管理 Maven 3.5.4
--服务器 Tomcat 9.0.45
-
-Spring5-复习
-【网友笔记】：
-1、https://blog.csdn.net/weixin_45496190/article/details/107059038
-2、https://blog.csdn.net/weixin_45496190/article/details/107067200
-3、https://blog.csdn.net/weixin_45496190/article/details/107071204
-4、https://blog.csdn.net/weixin_45496190/article/details/107082732
-5、https://blog.csdn.net/weixin_45496190/article/details/107092107
-
-IOC AOP JdbcTemplate 【事务】
-
-1 IOC 控制反转 【依赖jar包：Spring4个基础jar包：Beans Core Context Expression，logging包】
-  1-0 底层原理
-    XML解析，工厂模式，反射
-· 【练习1】工厂模式
-
+- 语言：java (jdk) 8u301  
+- IDE：IntelliJ IDEA 2018.3.6  
+- 项目管理：Maven 3.5.4  
+- 服务器：Tomcat 9.0.45  
+***
+# Spring5-复习
+## 【网友笔记】：
+1、https://blog.csdn.net/weixin_45496190/article/details/107059038  
+2、https://blog.csdn.net/weixin_45496190/article/details/107067200  
+3、https://blog.csdn.net/weixin_45496190/article/details/107071204  
+4、https://blog.csdn.net/weixin_45496190/article/details/107082732  
+5、https://blog.csdn.net/weixin_45496190/article/details/107092107  
+***
+## IOC AOP JdbcTemplate 【事务】
+1. **IOC 控制反转** *【依赖jar包：Spring4个基础jar包：Beans Core Context Expression，logging包】*  
+    - 底层原理  
+        - XML解析，工厂模式，反射
+#### · 【练习1】工厂模式
+  
   1-1 基于XML
     1-1-1 创建对象 <bean id="" class="类全路径" /> ApplicationContext context = new ClassPathXmlApplicationContext（“XML文件名”）；
 	1-1-2 属性注入
