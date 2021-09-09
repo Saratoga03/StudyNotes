@@ -1,5 +1,4 @@
 # java web 环境设定
-
 - 语言：java (jdk) 8u301  
 - IDE：IntelliJ IDEA 2018.3.6  
 - 项目管理：Maven 3.5.4  
@@ -14,18 +13,18 @@
 5、https://blog.csdn.net/weixin_45496190/article/details/107092107  
 ***
 ## IOC AOP JdbcTemplate 【事务】
-1. **IOC 控制反转** *【依赖jar包：Spring4个基础jar包：Beans Core Context Expression，logging包】*  
+1. **IOC 控制反转** *【依赖jar包：Spring4个基础jar包：Beans Core Context Expression + logging包】* 
     - 底层原理  
-        - XML解析，工厂模式，反射
-#### · 【练习1】工厂模式
-  
-  1-1 基于XML
-    1-1-1 创建对象 <bean id="" class="类全路径" /> ApplicationContext context = new ClassPathXmlApplicationContext（“XML文件名”）；
-	1-1-2 属性注入
-	　　A set方法注入 <property name="变量名" value="值" />
+        - XML解析，工厂模式，反射  
+**· 【练习1】工厂模式**
+
+    - 基于XML  
+        - 创建对象 <bean id="" class="类全路径" /> ApplicationContext context = new ClassPathXmlApplicationContext（“XML文件名”）；
+        - 属性注入
+	　A set方法注入 <property name="变量名" value="值" />
 	  B 有参构造注入 <constructor-arg name="变量名" value="值" />
 	  C p名称空间注入 <bean id="" class="" p:bname="" bauthor="" /> (需要追加命名空间p)
-    1-1-3 注入对象
+        - 注入对象
 	  0 空值和符号 <null> <![CDATA[内容]]>
 	  A 变量 <property name="" value="" />
 	  B 数组 <array><value></value></array>
@@ -36,16 +35,15 @@
 	  G 引入外部properties文件 （需要追加命名空间context）
 	    <context:property-placeholder location="classpath:properties文件路径">
 		<property name="" value="${key}">
-	1-1-4
-	  设置对象类型值(提取公共对象值) (需要追加命名空间util)
+        - 设置对象类型值(提取公共对象值) (需要追加命名空间util)
 	  <util:list id="utilList"><value>...</value><util:list> (util:array/map/set...)
 	  <property name="" ref="utilList">
-	1-1-4 FactoryBean
+        - FactoryBean
 	  返回类型可以与Bean类型不一致 （定义返回Bean类继承FactoryBean<T>接口）
-	1-1-5 作用域
+        - 作用域
 	  A 单实例 <bean id="" class="" scope="singleton">（默认）
 	  B 多实例 <bean id="" class="" scope="prototype">
-· 【练习2】基于XML创建对象并注入属性
+### · 【练习2】基于XML创建对象并注入属性
 	1-1-6 生命周期
 	  七步生命周期
 	  1 通过构造器创建bean实例（无参构造）
@@ -55,10 +53,10 @@
 	  5 把bean实例传递给后置处理器方法postProcessAfterInitialization
       6 bean可以正常使用了（对象能获取到了）
       7	调用bean销毁方法（需要配置：destroy-method=""）
-· 【练习3】生命周期演示
+### · 【练习3】生命周期演示
 
   
-  1-2 基于注解（依赖jar包：基于XML的5个包+spring-aop包）
+    - 基于注解（依赖jar包：基于XML的5个包+spring-aop包）
     1-2-1 创建对象（四者作用完全一致）
       A SpringMVC模式
 	    View       → @Component
@@ -81,7 +79,7 @@
 	  @Resource（根据类型or名称注入）（javax包下的注解，并非spring专属，不推荐使用）
 	  @Value（普通变量注入）
   
-  1-3 完全注解开发
+    - 完全注解开发
     上记基于注解方式实现IOC的方式中，需要用到配置文件的只有开启组件扫描这一部分。
 	开启组件扫描（创建配置类）
 	  @Configuration
@@ -89,7 +87,7 @@
 	  public class ***() {***}
 	  
 	  ApplicationContext contex = new AnnotationConfigApplicationContext(***.class);
-· 【练习4】基于注解创建对象并注入属性（基于XML开启组件扫描&完全注解开发）
+### · 【练习4】基于注解创建对象并注入属性（基于XML开启组件扫描&完全注解开发）
   
 2 AOP 面向切面编程
   2-0 底层原理
