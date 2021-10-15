@@ -127,13 +127,33 @@
     ```
 #### 映射相关
 1. 捕获http请求触发后台事件（@RequestMapping）
-
-
-
+  - 可以修饰类或方法，用于捕获http请求。
+  - 属性
+    - value  
+      http请求地址，用于匹配请求映射。
+    - method  
+      http请求方法，主要有POST, GET, PUT, DELETE四种。  
+      POST, GET请求浏览器可以直接发送，但PUT和DELETE请求则需要通过过滤器实现。  
+      派生注解：@GetMapping等效于@RequestMapping(method=get)，其余同理。
 2. 后台接收前台参数（获取请求参数）
-
-
-
+  - ServletAPI（原生）  
+    HttpServletRequest
+  - 控制器形参  
+    ★变量名必须与前台元素名一致
+  - @RequestParam
+    ★修饰变量，变量名任意  
+    ★属性  
+    - value：前台元素名
+    - required：是否必须
+    - defaultValue：默认值
+  - @PathVariable
+    ★接收占位符中的参数（Rest风格url）
+  - @RequestHeader  
+    ★映射请求头信息
+  - @CookieValue  
+    ★映射Cookie信息
+  - POJO  
+    ★用简单类型封装一组变量
 3. 前台接收后台数据（域对象共享数据）
 
 
